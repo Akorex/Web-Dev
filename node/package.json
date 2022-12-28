@@ -1,0 +1,22 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "fortune": "^5.5.18"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "portfinder": "^1.0.32",
+    "puppeteer": "^19.4.1"
+  }
+}
