@@ -26,6 +26,8 @@ app.get('/about', handlers.about);
 app.use(handlers.notFound);
 app.use(handlers.serverError);
 
+app.disable('x-powered-by');
+
 if (require.main == module) {
     app.listen(port, () => console.log(`Express started on http://localhost:${port}
                 Press Ctrl-C to terminate`));

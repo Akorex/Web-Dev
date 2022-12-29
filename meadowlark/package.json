@@ -4,7 +4,8 @@
   "description": "",
   "main": "1.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint meadowlark.js lib"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,8 @@
     "fortune": "^5.5.18"
   },
   "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-plugin-react": "^7.31.11",
     "jest": "^29.3.1",
     "portfinder": "^1.0.32",
     "puppeteer": "^19.4.1"
