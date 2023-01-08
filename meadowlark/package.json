@@ -11,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
-    "fortune": "^5.5.18"
+    "fortune": "^5.5.18",
+    "multiparty": "^4.2.3"
   },
   "devDependencies": {
     "eslint": "^8.30.0",
