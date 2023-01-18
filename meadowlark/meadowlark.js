@@ -5,22 +5,37 @@ const app = express();
 const port = process.env.PORT || 3000;
 const handlers = require('./lib/handlers');
 const multiparty = require('multiparty');
+const cookieParser = require('cookie-parser');
+const { credentials } = require('./config');
+const expressSession = require('express-session');
+const flashMiddleware = require('./lib/middleware/flash');
+const weatherMiddleware = require('./lib/middleware/weather');
 
 
-// configure Handlebars views engine
+// some configs
 app.engine('handlebars', expressHandlebars.engine({
     defaultLayout: 'main',
 }));
-
 app.set('view engine', 'handlebars');
+
 app.disable('x-powered-by');
+app.use(express.static(__dirname + '/public')); //static 
 
-//static 
-app.use(express.static(__dirname + '/public'));
+app.use(cookieParser(credentials.cookieSecret));
+app.use(expressSession({resave: false, saveUninitialized: false, secret: credentials.cookieSecret}));
+app.use(flashMiddleware);
+app.use(weatherMiddleware);
 
-// form handling
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true})); // form handling
+app.use(bodyParser.json()); //jsonify forms
+
+
+// routes
+app.get('/', handlers.home);
+app.get('/about', handlers.about);
+app.use(handlers.notFound);
+app.use(handlers.serverError);
+
 
 // handlers for browser-based form submission
 app.get('/newsletter-signup', handlers.newsletterSignup);
@@ -28,7 +43,7 @@ app.post('/newsletter-signup/process', handlers.newsletterSignupProcess);
 app.get('/newsletter-signup/thank-you', handlers.newletterSignupThankYou);
 
 // handlers for JSON form submission
-app.get('/newsletter', handlers.newsletter);
+app.get('/newsletter-signup', handlers.newsletter);
 app.post('/api/newsletter-signup', handlers.api.newsletterSignup);
 
 app.post('/contest/vacation-photo/:year/:month', (req, res) => {
@@ -38,14 +53,6 @@ app.post('/contest/vacation-photo/:year/:month', (req, res) => {
         handlers.vacationPhotoContestProcess(req, res, fields, files)
     })
 })
-
-// routes
-app.get('/', handlers.home);
-app.get('/about', handlers.about);
-
-// custom error pages
-app.use(handlers.notFound);
-app.use(handlers.serverError);
 
 
 if (require.main == module) {
