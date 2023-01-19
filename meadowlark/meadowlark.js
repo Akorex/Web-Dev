@@ -10,6 +10,8 @@ const { credentials } = require('./config');
 const expressSession = require('express-session');
 const flashMiddleware = require('./lib/middleware/flash');
 const weatherMiddleware = require('./lib/middleware/weather');
+//const morgan = require('morgan');
+//const fs = require('fs');
 
 
 // some configs
@@ -33,9 +35,6 @@ app.use(bodyParser.json()); //jsonify forms
 // routes
 app.get('/', handlers.home);
 app.get('/about', handlers.about);
-app.use(handlers.notFound);
-app.use(handlers.serverError);
-
 
 // handlers for browser-based form submission
 app.get('/newsletter-signup', handlers.newsletterSignup);
@@ -54,9 +53,11 @@ app.post('/contest/vacation-photo/:year/:month', (req, res) => {
     })
 })
 
+app.use(handlers.notFound);
+app.use(handlers.serverError);
 
 if (require.main == module) {
-    app.listen(port, () => console.log(`Express started on http://localhost:${port}
+    app.listen(port, () => console.log(`Express started in ${app.get('env')} on http://localhost:${port}
                 Press Ctrl-C to terminate`));
 }
 else {

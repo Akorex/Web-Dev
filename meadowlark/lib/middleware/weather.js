@@ -10,15 +10,6 @@ const getWeatherData = () => [
     },
     {
       location: {
-        name: 'Bend',
-      },
-      forecastUrl: 'https://api.weather.gov/gridpoints/PDT/34,40/forecast',
-      iconUrl: 'https://api.weather.gov/icons/land/day/tsra_sct,50?size=medium',
-      weather: 'Scattered Showers And Thunderstorms',
-      temp: '51 F',
-    },
-    {
-      location: {
         name: 'Manzanita',
       },
       forecastUrl: 'https://api.weather.gov/gridpoints/PQR/73,120/forecast',

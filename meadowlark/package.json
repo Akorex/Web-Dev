@@ -16,7 +16,10 @@
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "fortune": "^5.5.18",
-    "multiparty": "^4.2.3"
+    "morgan": "^1.10.0",
+    "multiparty": "^4.2.3",
+    "node-mailer": "^0.1.1",
+    "nodemailer": "^6.9.0"
   },
   "devDependencies": {
     "eslint": "^8.30.0",
