@@ -33,7 +33,7 @@ process.on('uncaughtException', err => {
   // email or even better a service like Sentry,
   // Rollbar, or New Relic
   process.exit(1)
-})
+});
 
 
 function startServer(port) {
