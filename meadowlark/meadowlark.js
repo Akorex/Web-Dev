@@ -10,6 +10,8 @@ const { credentials } = require('./config');
 const expressSession = require('express-session');
 const flashMiddleware = require('./lib/middleware/flash');
 const weatherMiddleware = require('./lib/middleware/weather');
+const nodemailer = require('nodemailer');
+
 //const morgan = require('morgan');
 //const fs = require('fs');
 
