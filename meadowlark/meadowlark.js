@@ -34,25 +34,16 @@ app.use(bodyParser.urlencoded({extended: true})); // form handling
 app.use(bodyParser.json()); //jsonify forms
 
 
-// some
-const fortuneCookies = [
-    "Conquer your fears or they will conquer you.",
-    "Rivers need springs.",
-    "Do not fear what you don't know.",
-    "You will have a pleasant surprise.",
-    "Whenever possible, keep it simple.",
-  ]
-  exports.getFortune = () => {
-    const idx = Math.floor(Math.random()*fortuneCookies.length)
-    return fortuneCookies[idx]
-  }
-
-  //
-
 
 // routes
 app.get('/', handlers.home);
 app.get('/about', handlers.about);
+app.get('/headers', (req, res) => {
+    res.type('text/plain');
+    const headers = Object.entries(req.headers)
+    .map(([key, value]) => `${key}: ${value}`);
+    res.send(headers.join('\n'));
+})
 
 // handlers for browser-based form submission
 app.get('/newsletter-signup', handlers.newsletterSignup);
