@@ -129,3 +129,83 @@ enum Language{
     Spanish,
     Russian
 }
+
+
+// functions
+function log(message: string, userId?: string){
+    let time = new Date().toLocaleDateString();
+    console.log(time, message, userId || "Not signed in")
+}
+
+log("page loaded");
+log("User signed in", 'manofletters');
+
+function add(a: number, b: number){
+    return a + b;
+}
+
+console.log(add(10, 11));
+console.log(add.apply(null, [10, 11]))
+console.log(add.call(null, 10, 11))
+console.log(add.bind(null, 10, 11)())
+
+// generator functions
+function* createFibonacciGenerator() {
+    let a = 0
+    let b = 1
+
+    while (true) {
+        yield a;
+        [a, b] = [b, a + b]
+    }
+}
+
+let fibonacciGen = createFibonacciGenerator()
+console.log(fibonacciGen.next())
+console.log(fibonacciGen.next())
+console.log(fibonacciGen.next())
+console.log(fibonacciGen.next())
+
+// call signatures
+/*
+type Log = {message: string, userId?: string} => void
+
+let log: Log = {
+    message, 
+    userId = "Not signed in"
+} => {
+
+} */
+
+// contextual typing
+function times(
+    f: (index: number) => void,
+    n: number
+){
+    for (let i = 0; i < n; i++){
+        f(i);
+    }
+}
+
+times(n => console.log(n), 4);
+
+
+// overloaded functions
+type Reserve = {
+    (from: Date, to: Date, destination: string): any
+    (from: Date, destination: string): any
+}
+
+let reserve: Reserve = (
+    from: Date,
+    toOrDestination: Date| string,
+    destination?: string
+) => {
+    if (toOrDestination instanceof Date && destination !== undefined){
+        // Book a one way trip
+    }
+    else if (typeof toOrDestination === 'string') {
+        // Book a two way trip
+    }
+}
+
