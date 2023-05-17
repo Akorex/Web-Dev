@@ -47,3 +47,35 @@ function map<T, U> (array: T[], f: (item: T) => U): U[]{
 console.log(map([1, 2, 3, 4], _ => _ * _))
 
 
+// interfaces
+interface User {
+    name: string
+}
+
+interface User{
+    age: number
+}
+
+let u: User = {
+    name: "Ashley",
+    age: 10
+}
+
+console.log(u.age);
+
+interface Animal{
+    readonly name: string
+    eat(feet: string): void
+    sleep(hours: number): void
+}
+
+
+class Bird implements Animal{
+    name = "Whiskers"
+    eat(food: string) {
+        console.info("Ate some", food, ". MMM")
+    }
+    sleep(hours: number){
+        console.info("Slept for", hours, " hours")
+    }
+}
