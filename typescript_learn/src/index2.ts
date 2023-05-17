@@ -79,3 +79,53 @@ class Bird implements Animal{
         console.info("Slept for", hours, " hours")
     }
 }
+
+// factory design pattern
+type Shoe = {
+    purpose: string
+}
+
+class BalletFlat implements Shoe{
+    purpose = "dancing"
+}
+
+class Boot implements Shoe{
+    purpose = "woodcutting"
+}
+
+class Sneaker implements Shoe{
+    purpose = "walking"
+}
+
+let shoe = {
+    create(type: 'balletFlat' | 'boot' | 'sneaker'): Shoe{
+        switch(type) {
+            case 'balletFlat': return new BalletFlat
+            case 'boot': return new Boot
+            case 'sneaker': return new Sneaker
+        }
+    }
+}
+
+// builder design pattern
+
+class RequestBuilder{
+    private data: object | null = null
+    private method: 'get' | 'post' | null = null
+    private url: string | null = null
+
+    setMethod(method: 'get' | 'post'): this{
+        this.method = method
+        return this
+    }
+
+    setData(data: object): this{
+        this.data = data
+        return this
+    }
+
+    setURL(url: string): this{
+        this.url = url
+        return this
+    }
+}
