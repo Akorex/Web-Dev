@@ -73,3 +73,27 @@ type File = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H'
 type Rank = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 
 
 
+type State = {
+    [key: string]: string
+}
+
+class stringDatabase {
+    state: State = {}
+    
+    get(key: string): string | null {
+        return key in this.state ? this.state[key] : null
+    }
+
+    set(key: string, value: string): void{
+        this.state[key] = value
+    }
+
+    static from(state: State) {
+        let db = new stringDatabase
+
+        for (let key in state) {
+            db.set(key, state[key])
+        }
+        return db
+    }
+}
