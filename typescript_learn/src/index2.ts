@@ -126,6 +126,51 @@ class RequestBuilder{
 
     setURL(url: string): this{
         this.url = url
-        return this
+        return this 
     }
 }
+
+//  variables initialized with null or undefined
+let x = null
+x = 3
+console.log(typeof x)
+
+
+// excess property checking
+
+type Options = {
+    baseURL: string
+    cacheSize?: number
+    tier?: 'prod' | 'dev'
+}
+
+
+class API {
+    constructor(private options: Options) {}
+}
+
+//new API({baseURL: "http://example.com", tierr: "prod"})
+
+new API({
+    baseURL: "http://example.com",
+    tier: 'prod'
+})
+
+new API({
+    baseURL: "http://example.com", 
+    badTier: 'prod'
+} as Options) // 
+
+let badOptions = {
+    baseURL: "http://example.com",
+    badTier: 'prod'
+}
+
+new API(badOptions)
+
+let options: Options = {
+    baseURL: "http://example.com",
+    badTier: 'prd'
+} // doesn't work
+
+new API(options)
