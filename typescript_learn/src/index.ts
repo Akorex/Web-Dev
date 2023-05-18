@@ -209,3 +209,52 @@ let reserve: Reserve = (
     }
 }
 
+// custom error types
+class InvalidDateFormatError extends RangeError {}
+class DateIsInTheFutureError extends RangeError {}
+
+
+function ask(){
+    return prompt("When is your birthday")
+}
+
+
+/**
+ * @throws {InvalidDateFormatError} The user entered their birthday incorrectly
+ * @throws {DateIsInTheFutureError} The user eneterd a birthday in the future
+ */
+function parse(birthday: string): Date | null{
+    let date = new Date(birthday)
+
+    // validate the date
+    if (!isValid(date)){
+        throw new InvalidDateFormatError("Enter a date in the form YYYY/MM/DD")
+    }
+
+    if (date.getTime() > Date.now()){
+        throw new DateIsInTheFutureError("Are you a time-traveller?")
+    }
+    return date
+}
+
+
+function isValid(date: Date): boolean{
+    return Object.prototype.toString.call(date) === '[object Date]'
+    && !Number.isNaN(date.getTime())
+}
+
+try{
+    let date = parse(ask())
+    console.info("Date is", date?.toISOString())
+} catch(e) {
+    if (e instanceof InvalidDateFormatError) {
+        console.error(e.message)
+    }
+    else if (e instanceof DateIsInTheFutureError){
+        console.error(e.message)
+    }
+    else {
+        throw e
+    }
+}
+
