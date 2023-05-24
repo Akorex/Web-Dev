@@ -1,4 +1,5 @@
 meadowlark/node_modules
 old/
 .credentials.*
-typescript_learn/node_modules
+learnings/node_modules
+learnings/CLI calc/node_modules
