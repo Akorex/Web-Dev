@@ -21,6 +21,15 @@ let f: {
 f = {g: 5, h: 'd', 10: true};
 console.log(f);
 
+// keyof operator
+type point = {
+    x: "number"
+    y: "number"
+}
+
+type P = keyof point
+
+
 // using index signatures
 let airplaneSeatingAssignments: {
     [seatNumber: string]: string
