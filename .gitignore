@@ -1,4 +1,8 @@
 .env
 .credentials.*
-/node_modules
+Tutorials/node_modules
+Tutorials/cli_calculator/node_modules
+Tutorials/TypeScript/node_modules
+Tutorials/Task Manager/node_modules
+Tutorials/meadowlark/node_modules
 
