@@ -1,8 +1,6 @@
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
-const app = express();
-const port = process.env.PORT || 3000;
 const handlers = require('./lib/handlers');
 const multiparty = require('multiparty');
 const cookieParser = require('cookie-parser');
@@ -15,6 +13,8 @@ const nodemailer = require('nodemailer');
 //const morgan = require('morgan');
 //const fs = require('fs');
 
+const app = express();
+const port = process.env.PORT || 3000;
 
 // some configs
 app.engine('handlebars', expressHandlebars.engine({
