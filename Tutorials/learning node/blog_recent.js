@@ -1,6 +1,6 @@
 const http = require('http');
 const fs = require('fs');
-const port = 3000;
+const port = 9000;
 
 const server = http.createServer((req, res) => {
     if (req.url == '/'){
@@ -28,4 +28,4 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(port, '127.0.0.1', () => console.log(`server started on ${port}. Ctrl-C to terminate`));
+server.listen(port, () => console.log(`server started on http://localhost:${port}. Ctrl-C to terminate`));
