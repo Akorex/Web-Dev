@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title> Google Maps</title>
+    </head>
+    <body>
+        <h1> My First Google Maps</h1>
+        <div id="map" style="width:400px; height:400px">
+        <script src="https://maps.googleapis.com/maps/api/js">
+            var mapCanvas= document.getElementById("map");
+            var mapOptions= {
+                center: new google.maps.Latlng(51.5, -0.2), zoom:10
+            }
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            
+            </script>
+            </div>
+    </body>
+</html>

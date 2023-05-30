@@ -1,0 +1,41 @@
+/*set the general style for all buttons */
+.btn{
+    border:none;
+    color:white;
+    padding:14px 28px;
+    cursor:pointer;
+}
+
+.success{
+    background-color:#4CAF50;
+}
+.success:hover{
+    background-color:#46a049;
+}
+
+.info{
+    background-color:#2196F3;
+}
+.info:hover{
+    background-color:#0b7dda;
+}
+
+.warning{
+    background-color:#ff9800;
+}
+.warning:hover{
+    background-color:#e68a00;
+}
+.danger{
+    background-color:red;
+}
+.danger:hover{
+    background-color:#f54242;
+}
+.default{
+    background-color:#e7e7e7;;
+    color:black;
+}
+.default:hover{
+    background-color:#ddd;
+}

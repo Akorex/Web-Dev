@@ -1,0 +1,13 @@
+@charset "utf-8";
+ol.lower-alpha {
+	list-style-type: lower-alpha;
+}/* CSS Document */
+ul.circle {
+	list-style-type: circle;
+}
+ul.square {
+	
+	list-style-type: circle;
+	list-style-position: outside;
+}
+

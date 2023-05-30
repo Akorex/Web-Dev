@@ -1,0 +1,10 @@
+@charset "utf-8";
+div{
+	width:150px;
+	height:150px;
+	background-color:#00FF99;
+	float:left;
+	font-family:sans-serif;
+	overflow:auto;
+}
+

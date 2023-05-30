@@ -1,0 +1,49 @@
+/*customize the button*/
+.button{
+    background-color:green;
+    color:white;
+    padding:16px;
+    font-size:16px;
+    border:none;
+    cursor:pointer;
+}
+
+/*style the button container*/
+.dropddown{
+    position: relative;
+    display:inline-block;
+}
+
+/*style the button when hovered and focus*/
+.button:hover .button:focus{
+    background-color:#2980B9;
+}
+
+/*hide the content by default*/
+.content{
+    display:none;
+    font-size:16px;
+    min-width: 160px;
+    background-color:#f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    position:absolute;
+    z-index:1;
+}
+
+/*style the links in the dropdown*/
+.content a{
+    color:black;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+}
+
+/*style the links when hovered*/
+.content a:hover{
+    background-color:#ddd;
+}
+
+/*use Javascript to include this class when user clicks on the button*/
+.show{
+    display:block;
+}

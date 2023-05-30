@@ -1,0 +1,1 @@
+setInterval(function fu(){ alert("hi");}, 1000);

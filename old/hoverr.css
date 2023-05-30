@@ -1,0 +1,50 @@
+/*customize the button*/
+.button{
+    display:block;
+    font-size:16px;
+    background-color:green;
+    color:white;
+    padding:16px;
+    border:none;
+}
+
+/*customize the button container*/
+.dropdown{
+    position: relative;
+    display:inline-block;
+}
+
+/*hide the dropdown content by default*/
+.dropdown-content{
+    display:none;
+    font-size:16px;
+    min-width: 160px;
+    background-color:white;
+    z-index:1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0, 0.2);
+}
+
+/*customize the links*/
+.dropdown-content a{
+    color: black;
+    text-decoration: none;
+    display:block;
+    padding:12px 16px;
+
+}
+
+/*color links on hover*/
+.dropdown-content a:hover{
+    background-color:#ddd;
+}
+
+/*show links on hover on button*/
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+
+/*change the color of button when hovered*/
+.dropdown:hover button{
+    background-color:#3e8341;
+}
+

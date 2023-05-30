@@ -1,0 +1,29 @@
+@charset "utf-8";
+.see{
+	padding: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: blue green yellow blue;
+}
+
+.me{
+	padding: 10px;
+	border-style: double;
+	border-width: 5px;
+	border-color: #FF6600;
+}
+
+.you{
+	padding: 7px;
+	border-style: outset;
+	border-width: 7px;
+	border-radius: 15px;
+	border-color: rgb(0, 153, 0);
+}
+div {
+	border-style: solid;
+	border-size: 5px;
+	border-color: green;
+	width: 90px;
+	height: 90px;
+}

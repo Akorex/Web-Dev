@@ -1,0 +1,12 @@
+@charset "utf-8";
+.main {
+	height: 150px; width: 400px;
+	background-color: LightSKyblue;
+	display: inline-table;
+}
+.paragraph {
+	display: table-cell;
+	vertical-align: middle;
+}
+	/* CSS Document */
+

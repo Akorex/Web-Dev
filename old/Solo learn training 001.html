@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML</title>
+    </head>
+    <body bgcolor="#00bfff">
+        <div class="section">
+        <h1><span><b>My HTML Remembrance</b></span></h1>
+        <p>HTML stands for HyperText Markup Language.</p></div>
+        Modern Web Design contains:
+        <ol>
+            <li>HTML: Structure</li>
+            <li>CSS: Presentation</li>
+            <li>JavaScript: Behavior</li>
+        </ol>
+        <hr>
+        <!-- the tag above is to create a hair line -->
+        <p>Text Formating</p>
+        <ul>
+        <li>regular</li>
+        <li>&lt;b&gt;<b> bold </b>&lt;/b&gt;</li>
+        <li>&lt;big&gt;<big> big </big>&lt;/big&gt;</li>
+        <li>&lt;i&gt;<i> italic </i>&lt;/i&gt;</li>
+        <li>&lt;small&gt;<small> small </small>&lt;/small&gt;</li>
+        <li>&lt;strong&gt;<strong> strong </strong>&lt;/strong&gt;</li>
+        <li>&lt;sub&gt;<sub> subscripted </sub>&lt;/sub&gt;</li>
+        <li>&lt;sup&gt;<sup> superscripted </sup>&lt;/sup&gt;</li>
+        <li>&lt;ins&gt;<ins> inserted </ins>&lt;/ins&gt;</li>
+        <li>&lt;del&gt;<del> deleted </del>&lt;/del&gt;</li>
+        </ul>
+        <hr>
+        <p>Heading</p>
+            <h1>This is heading 1</h1>
+            <h2>This is heading 2</h2>
+            <h3>This is heading 3</h3>
+            <h4>This is heading 4</h4>
+            <h5>This is heading 5</h5>
+            <h6>This is heading 6</h6>
+        <hr>
+        <p>HTML documents are made up of HTML elements. An HTML element is written using a start tag and an end tag, and with the content in between. HTML documents consist of nested HTML elements; such as: &lt;p&gt; tags, &lt;br/&gt; tag and the content, <b>"This is a paragraph".</b></p>
+        <p>Attributes provide additional information about an element or a tag, while also modifying them. Most attributes have a value; the value modifies the attribute. It is put inside the start tag</p>
+        <p align="center"><b>&lt;p align="center"&gt;</b>center<b>&lt;/p&gt;</b></p>
+        <p align="left"><b>&lt;p align="left"&gt;</b>left<b>&lt;/p&gt;</b></p>
+        <p align="right"><b>&lt;p align="right"&gt;</b>right<b>&lt;/p&gt;</b></p>
+        <hr>
+        <p>An image has a start tag only; <b>&lt;img/&gt;</b></p>
+        <img src="../../AppData/Local/Microsoft/Windows/INetCache/IE/FOT2IPJI/tree.jpg" height="150px" width="150px" border="2px" alt="" draggable="true"/>
+        <p>The code to create an image above is &lt;img src="tree.jpg" height="150px" width="150px" border="2px" alt=""/&gt;</p>
+        <hr>
+        <p>Links are also an integral part of every web page. You can add links to text or images that will enable the user to click on them in order to be directed to another file or webpage.
+        <br/>Use the href attribute to define the link's destination address. The target attribute specifies where to open the linked document. Giving a <b>_blank</b> value to your attribute will have the link open in a new window or new tab</p>
+        <p align="center"><a href="http://www.sololearn.com" target="_blank">Learn Playing</a></p>
+        <p>The code to create a link above is &lt;a href="http://www.sololearn.com" target="_blank"/&gt;</p>
+        <p align="center"><a href="http://www.sololearn.com" target="_blank"><img src="../../AppData/Local/Microsoft/Windows/INetCache/IE/FOT2IPJI/tree.jpg" height="100" width="100"/></a></p>
+        <p>The code to create an image link above is &lt;a href="http://www.sololearn.com" target="_blank"&gt; &lt;img src="tree.jpg" height="100" width="100"/&gt; &lt;/a&gt;</p>
+        <p>The sign that a text or an image is a link is that the pointer turns into a pointed hand.</p>
+        <hr>
+        <p> Tables are defined by using the &lt;table&gt; tag. 
+            Tables are divided into table rows with the &lt;tr&gt; tag.
+            Table rows are divided into table columns (table data) with the &lt;td&gt; tag.
+            <br/>A border can be added using the border attribute</p>
+        <table align="center" border="2">
+            <tr>
+            <td bgcolor="green">green</td>
+            <td bgcolor="blue">blue</td>
+            <td bgcolor="yellow">yellow</td>
+            </tr>
+            <tr>
+            <td bgcolor="pink">pink</td>
+            <td bgcolor="orange" colspan="2" style="color:white">orange</td>
+            </tr>
+        </table><br/>
+        
+        <p>Here is the code to create the table above<br/> &lt;table align="center" border="2"&gt;<br/>
+            &lt;tr&gt;<br/>
+            &lt;td bgcolor="green">green&lt;/td&gt;<br/>
+            &lt;td bgcolor="blue">blue&lt;/td&gt;<br/>
+            &lt;td bgcolor="yellow">yellow&lt;/td&gt;<br/>
+            &lt;/tr&gt;<br/>
+            &lt;tr&gt;<br/>
+            &lt;td bgcolor="pink">pink&lt;/td&gt;<br/>
+            &lt;td bgcolor="orange" colspan="2" style="color:white">orange&lt;/td&gt;<br/>
+            &lt;/tr&gt;<br/>
+        &lt;/table&gt; </p><br/>
+        My Coding Schedule
+        <table border="3">
+        <tr>
+          <th>Day</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+        </tr>
+        <tr>
+          <td>8-8:30</td>
+          <td class="selected">Learn</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>9-10</td>
+          <td></td>
+          <td class="selected">Practice</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>1-1:30</td>
+          <td></td>
+          <td></td>
+          <td class="selected">Play</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3:45-5</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="selected">Code</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>6-6:15</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="selected">Discuss</td>
+        </tr>
+        </table>
+        <br/>
+        <hr>
+        <p>Types of Elements</p>
+
+        <p>In HTML, most elements are defined as <b>block level</b> or <b>inline</b> elements.<br/>
+        <b>Block level</b> elements start from a new line. 
+            For example: &lt;h1&gt;, &lt;form&gt;, &lt;li&gt;, &lt;ol&gt;, &lt;ul&gt;, &lt;p&gt;, &lt;pre&gt;, &lt;table&gt;, &lt;div&gt;, etc.<br/>
+
+        <b>Inline</b> elements are normally displayed without line breaks. 
+            For example: &lt;b&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;img&gt;, &lt;input&gt;, &lt;em&gt;, &lt;span&gt;, etc.</p><br/>
+        <hr>
+        <p><b>Using &lt;Div&gt; and the attribute in it</b></p>
+        <div style="background-color:green; color:white; padding:20px;">
+            <p>Some paragraph text goes here.</p>
+            <p>Another paragraph goes here.</p>
+        </div>
+        <p>Here is the code</p>
+        &lt;div style="background-color:green; color:white; padding:20px;"&gt;<br/>
+            &lt;p&gt;Some paragraph text goes here.&lt;/p&gt;<br/>
+            &lt;p&gt;Another paragraph goes here.&lt;/p&gt;<br/>
+        &lt;/div&gt;
+        <hr>
+        <p>The &lt;form> Element</p>
+        <p>HTML forms are used to collect information from the user.<br/>
+        Forms are defined using the &lt;form> element, with its opening and closing tags.</p>
+        <form>
+        <lable>Your Name :</lable>
+          <input name="name" type="text" placeholder="Your complete name" required /><br/>
+        <label for="email">Your e-mail: </label>
+          <input name="email" type="email" placeholder="email@example.com" required /><br/>
+        <lable>Your comment :</lable>
+          <textarea name="message"></textarea><br/>
+         <lable>Choose one :</lable>
+          <input id="car" type="text" list="Fruits" />
+            <datalist id="Fruits">
+               <option value="Mango">
+               <option value="Banana">
+               <option value="Apple">
+            </datalist><br/>
+        <lable>Your URL :</lable>
+            <input id="url" name="url" type="url" placeholder="http://www.example.com" />
+            <br />
+        <lable>Your Phone :</lable>
+            <input id="tel" name="tel" type="tel" placeholder="555.555.1211" /><br/>
+            <input type="submit" value="SEND" class="submit"/>
+        </form>
+        <hr>
+        <p>HTML Colors!</p>
+
+        <p>HTML colors are expressed as hexadecimal values.<br/>
+           0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F<br/>
+           Colors are displayed in combinations of <b>red</b>, <b>green</b>, and <b>blue light</b> (RGB).<br/>
+        Hex values are written using the hashtag symbol (#), followed by either three or six hex characters.</p>
+        <p>#FF0000 means Red<br/>
+            #00FF00 means Green<br/>
+            #0000FF means Blue</p>
+        <hr>
+        <div class="section">
+        <h1><span>Setting a Video</span></h1>
+        <iframe height="150" width="300" src="https://www.youtube.com/embed/Q6_5InVJZ88" allowfullscreen frameborder="0"></iframe>
+        </div>
+        <hr>
+        <audio src="http://www.sololearn.com/uploads/audio.mp3" controls autoplay loop>
+            Audio element not supported by your browser
+        </audio>
+        <hr>
+        <video controls autoplay>
+           <source src="../../AppData/Local/Microsoft/Windows/INetCache/IE/FOT2IPJI/video.mp4" type="video/mp4">
+           <source src="../../AppData/Local/Microsoft/Windows/INetCache/IE/FOT2IPJI/video.ogg" type="video/ogg">
+           Video is not supported by your browser
+        </video>
+        <hr>
+        Status: <progress min="0" max="100" value="35">
+        </progress>
+        <hr>
+        <svg width="200" height="150">
+           <circle cx="80" cy="80" r="50" fill="red" style="stroke:#000000; 
+        stroke-width:10"/>
+        </svg>
+        <hr>
+        <svg width="500" height="150">
+           <rect width="300" height="100" 
+             x="20" y="20" fill="green" style="stroke:#ffff00; 
+        stroke-width:10"/>
+        </svg>
+        <hr>
+        <svg width="400" height="150">
+            <line x1="10" y1="10" x2="200" y2="100" 
+                style="stroke:#0000ff; stroke-linecap:round; 
+                stroke-width:20"  />
+        </svg>
+        <hr>
+        <svg width="250" height="250">
+            <polyline style="stroke-linejoin:miter; stroke:pink; 
+                stroke-width:30; fill: none;"
+                points="100 100, 150 150, 200 100" />
+        </svg>
+        <hr>
+            <svg height="200" width="500">
+           <ellipse cx="200" cy="100" rx="150" ry="70" style="fill:green; stroke:#ff0000; stroke-width:10"/>
+        </svg>
+        <hr>
+            <svg width="2000" height="250">
+        <polygon points="50 100, 200 200, 200 50" 
+              style="fill: green; stroke:black; stroke-width:5" />
+        </svg>
+        <hr>
+        <svg width="2000" height="150">
+        <rect width="150" height="150" fill="orange">
+          <animate attributeName="x" from="0" to="300"
+            dur="3s" fill="freeze" repeatCount="indefinite"/> 
+        </rect>
+        </svg>
+        <hr>
+        <p>The &lt;path> element is used to define a path.</p>
+        <p>The following commands are available for path data:</p>
+        <ul>
+            <li> M: moveto</li>
+           <li> L: lineto</li>
+           <li> H: horizontal lineto</li>
+           <li> V: vertical lineto</li>
+           <li> C: curveto</li>
+           <li> S: smooth curveto</li>
+           <li> Q: quadratic Bézier curve</li>
+           <li> T: smooth quadratic Bézier curveto</li>
+           <li> A: elliptical Arc</li>
+           <li> Z: closepath</li>
+        </ul>
+            Define a path using the d attribute:
+        <svg width="500" height="500">
+        <path d="M 0 0 L200 200 L200 0 Z" style="stroke:#000;  fill:none;" />
+        </svg>
+        <hr>
+    </body>
+</html>

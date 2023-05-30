@@ -1,0 +1,17 @@
+@charset "utf-8";
+p.serif {
+	font-family: "Times New Roman", Times, serif;
+}
+p.sansserif {
+	font-family: Helvetica, Arial, sans-serif;
+}
+p.monospace {
+	font-family: "Courier New", Courier, monospace;
+}
+p.cursive {
+	font-family: Florence, cursive;
+}
+p.Helvetica {
+	font-family: Helvetica;
+}/* CSS Document */
+
