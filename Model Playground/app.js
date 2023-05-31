@@ -1,6 +1,7 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
-const {homePage, birdsPage, petsPage, tumorsPage, translatePage} = require('./lib/handlers')
+const {homePage, birdsPage, petsPage, tumorsPage, 
+    translatePage, custom404, custom500} = require('./lib/handlers')
 
 
 
@@ -11,6 +12,7 @@ app.engine('handlebars', handlebars.engine({
     defaultLayout: 'main',
 }));
 app.set('view engine', 'handlebars');
+app.disable('x-powered-by');
 
 const port = 8000;
 
@@ -18,7 +20,7 @@ const port = 8000;
 
 // routes
 app.get(['/', '/home'], homePage)
-app.get('/birds-species', birdsPage)
+app.get('/birds', birdsPage)
 app.get('/pets', petsPage)
 app.get('/tumors', tumorsPage)
 app.get('/translate', translatePage)
@@ -29,11 +31,8 @@ app.get('/translate', translatePage)
 
 app.use(express.static('./public'))
 
-app.use((req, res) => {
-    res.type('text/plain')
-    res.status(404)
-    res.send('Page not Found')
-})
+app.use(custom404)
+app.use(custom500)
 
 
 // start the server

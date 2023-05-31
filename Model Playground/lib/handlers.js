@@ -18,4 +18,13 @@ const tumorsPage = (req, res) => {
 const translatePage = (req, res) => {
     res.render('translatepage')
 }
-module.exports = {homePage, birdsPage, petsPage, tumorsPage, translatePage}
+
+const custom404 = (req, res) => {
+    res.render('404')
+}
+
+const custom500 = (err, req, res, next) => {
+    res.render('500')
+}
+
+module.exports = {homePage, birdsPage, petsPage, tumorsPage, translatePage, custom404, custom500}
