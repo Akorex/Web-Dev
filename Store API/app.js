@@ -3,15 +3,13 @@ const notFoundMiddleWare = require('./middlewares/not-found')
 const errorMiddleWare = require('./middlewares/error-handler')
 const connectDB = require('./db/connect')
 const productsRouter = require('./routes/products')
-
-
-
 require('dotenv').config()
+require('express-async-errors')
 
 // some setups
 const port = process.env.PORT || 9000
 const app = express()
-
+app.use(express.json)
 
 // routes
 
