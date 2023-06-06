@@ -7,7 +7,7 @@ require('dotenv').config()
 require('express-async-errors')
 
 // some setups
-const port = process.env.PORT || 9000
+const port = process.env.PORT || 8080
 const app = express()
 app.use(express.json)
 
