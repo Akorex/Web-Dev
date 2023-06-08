@@ -1,13 +1,15 @@
 const express = require('express')
 const connectDB = require('./db/connect')
-const router = require('./routes/user')
+const userRouter = require('./routes/user')
+const blogRouter = require('./routes/blog')
 require('dotenv').config()
 
 const app = express()
 const port = process.env.PORT || 3000
 app.use(express.json())
 
-app.use('/api/user', router)
+app.use('/api/user', userRouter)
+app.use('/api/blog', blogRouter)
 
 
 const start = async() => {
