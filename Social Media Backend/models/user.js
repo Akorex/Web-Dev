@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: [6, 'your password should be longer than 6 characters']
-    }
+    }, 
+    blogs: [{type: mongoose.Types.ObjectId, ref: "Blog", required: true}]
 })
 
 model = mongoose.model("User", userSchema)

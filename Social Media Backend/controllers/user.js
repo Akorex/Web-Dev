@@ -28,7 +28,8 @@ const addUser = async(req, res) => {
     const newUser = new User({
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword, 
+        blogs: []
     })
 
     
