@@ -1,4 +1,4 @@
-This folder contains my work with Web Development using the JavaScript Stack - MongoDB, Express and Node JS and also with TypeScript. 
+This repository contains my work with Web Development using the JavaScript Stack - MongoDB, Express and Node JS and also with TypeScript. 
 
 ## Model Playground
 
