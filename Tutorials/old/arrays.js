@@ -1,5 +1,10 @@
-var courses = ["HTML", "CSS", "Javascript"];
-var colors = ["green", "yellow", "blue"];
+let courses = ["HTML", "CSS", "Javascript"];
+let colors = ["green", "yellow", "blue"];
+
+
+console.log(courses[2])
+console.log(courses.length)
+
 
 document.write(courses[2]);
 document.write(courses.length);
