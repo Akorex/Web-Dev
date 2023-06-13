@@ -10,3 +10,5 @@ const {getAllJobs,
 
 Router.route('/').post(createJob).get(getAllJobs)
 Router.route('/:id').get(getJob).delete(deleteJob).patch(updateJob)
+
+module.exports = Router
