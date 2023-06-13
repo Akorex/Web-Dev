@@ -13,7 +13,7 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', jobsRouter)
 
 
-
+app.use(notFoundMiddleWare)
 
 // set ups
 const port = process.env.PORT || 3000
