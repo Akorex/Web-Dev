@@ -18,7 +18,7 @@ const rateLimiter = require('express-rate-limit')
 const app = express()
 app.use(express.json())
 
-app.set('trust proxy', 0)
+app.set('trust proxy', 1)
 app.use(
     rateLimiter({
       windowMs: 15 * 60 * 1000, // 15 minutes
