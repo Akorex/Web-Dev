@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const {createUrl} = require('../controllers/links')
+const {createUrl, getUrl} = require('../controllers/links')
 
-router.route('/').post(createUrl).get()
+router.route('/').post(createUrl)
+router.route('/:code').get(getUrl)
 
 module.exports = router
