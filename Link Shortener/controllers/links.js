@@ -36,7 +36,7 @@ const createUrl = async (req, res) => {
 
 const getUrl = async(req, res) => {
     try{
-        const url = await Links.findOne({urlCode: req.params.urlCode})
+        const url = await Links.findOne({urlCode: req.params.code})
 
         if (url){
             return res.redirect(url.longUrl)
