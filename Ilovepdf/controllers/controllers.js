@@ -10,8 +10,14 @@ const splitPDF = (req, res) => {
     res.render('splitpdf', {title: "Split PDF files"})
 }
 
+const compressPDF = (req, res) => {
+    res.render('compresspdf', {title: "Compress PDF files"})
+}
+
+
 module.exports = {
     homePage, 
     mergePDF, 
     splitPDF,
+    compressPDF
 }
