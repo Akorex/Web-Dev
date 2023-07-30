@@ -1,5 +1,5 @@
 const homePage = (req, res) => {
-    res.render('home', {title: "Home"})
+    res.render('home', {title: "iLovePDF | Online PDF tools"})
 }
 
 const mergePDF = (req, res) => {
@@ -14,10 +14,26 @@ const compressPDF = (req, res) => {
     res.render('compresspdf', {title: "Compress PDF files"})
 }
 
+const pdf2Word = (req, res) => {
+
+}
+
+const jpg2PDF = (req, res) => {
+    res.render('jpg2pdf', {title: "Convert JPG to PDF"})
+}
+
+
+const convertJpg2PDF = (req, res) => {
+
+}
+
 
 module.exports = {
     homePage, 
     mergePDF, 
     splitPDF,
-    compressPDF
+    compressPDF,
+    pdf2Word,
+    jpg2PDF, 
+    convertJpg2PDF
 }
