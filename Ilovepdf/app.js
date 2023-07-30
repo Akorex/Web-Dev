@@ -14,6 +14,7 @@ app.engine('handlebars', handlebars.engine({
 }))
 app.set('view engine', 'handlebars')
 
+app.use(express.static('public'))
 app.disable('x-powered-by')
 
 // routes

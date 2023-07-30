@@ -22,9 +22,8 @@ const jpg2PDF = (req, res) => {
     res.render('jpg2pdf', {title: "Convert JPG to PDF"})
 }
 
-
-const convertJpg2PDF = (req, res) => {
-
+const downloadFile = (req, res) => {
+    res.render('download', {title: "Download File"})
 }
 
 
@@ -35,5 +34,5 @@ module.exports = {
     compressPDF,
     pdf2Word,
     jpg2PDF, 
-    convertJpg2PDF
+    downloadFile
 }
