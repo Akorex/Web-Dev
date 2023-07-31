@@ -8,7 +8,7 @@ const multerStorage = multer.diskStorage({
 
     filename: (req, file, cb) => {
         const ext = file.mimetype.split('/')[1]
-        cb(null, `${file.originalname}.${ext}`)
+        cb(null, `${file.originalname}`)
     }
 })
 
@@ -20,9 +20,16 @@ const multerFilter = (req, file, cb) => {
     }
 }
 
+//const uploading = multer({
+  //  storage: multerStorage,
+    //limits: {fieldSize: 1 * 1024 * 1024}, // 1MB
+
+    //fileFilter: multerFilter,
+//}).array('uploadedImages', 2)
+
+
 const uploading = multer({
     storage: multerStorage,
-    //fileFilter: multerFilter,
+    limits: {fieldSize: 1 * 1024 * 1024} // 1 MB
 })
-
 module.exports = uploading

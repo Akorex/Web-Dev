@@ -24,5 +24,6 @@ Router.get('/download', downloadFile)
 
 // POST
 Router.post('/jpg_to_pdf', uploading.single('file'), convertJpg2PDF)
+//Router.post('/jpg_to_pdf', uploading, convertJpg2PDF)
 
 module.exports = Router
