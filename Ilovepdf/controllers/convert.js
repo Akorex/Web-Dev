@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const PDFDocument = require('pdfkit')
 
-const convertJpg2PDF = (req, res) => {
+const convertJpg2PDF = async (req, res) => {
 
     // get the file uploaded
     const filepath = req.file.path
@@ -13,7 +13,16 @@ const convertJpg2PDF = (req, res) => {
     const outpath = path.join('./public/files', newFilename)
 
     const doc = new PDFDocument
-    doc.pipe(fs.createWriteStream(outpath))
+    const writeStream = fs.createWriteStream(outpath)
+
+    // Listen for the 'finish' event to know when the PDF is fully generated
+    writeStream.on('finish', () => {
+    // Now, the PDF is fully generated, and the writeStream is closed.
+    // We can trigger the download after the 'finish' event is emitted.
+    res.download(outpath);
+    })
+
+    doc.pipe(writeStream)
     doc.image(filepath, {
         fit: [500, 400],
         align: 'center',
@@ -22,8 +31,7 @@ const convertJpg2PDF = (req, res) => {
 
     doc.end()
 
-    downloadfile = res.download(outpath)
-    res.redirect('/download')
+    //res.redirect('/download')
 }
 
 module.exports = {convertJpg2PDF}
