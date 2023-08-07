@@ -3,10 +3,11 @@
 const fs = require('fs')
 const path = require('path')
 const PDFDocument = require('pdfkit')
+const docConverter = require('docx-pdf')
 
 const convertJpg2PDF = async (req, res) => {
-
-    // get the file uploaded
+    try{
+        // get the file uploaded
     const filepath = req.file.path
     const extName = path.extname(filepath)
     const newFilename = path.basename(filepath, extName) + '.pdf'
@@ -32,6 +33,54 @@ const convertJpg2PDF = async (req, res) => {
     doc.end()
 
     //res.redirect('/download')
+    }catch(error){
+        console.log(`Something went wrong. ${error}`)
+        res.redirect(req.originalUrl)
+    }
+    
 }
 
-module.exports = {convertJpg2PDF}
+const convertPDF2Jpg = async (req, res) => {
+    try {
+        const filepath = req.file.path
+        const extName = path.extname(filepath)
+        const newFilename = path.basename(filepath, extName) + '.jpg'
+        const outpath = path.join('./public/files', newFilename)
+
+        console.log(newFilename)
+    } catch (error) {
+        console.log(`Something went wrong. ${error}`)
+        res.redirect(req.originalUrl)
+    }
+}
+
+
+const convertWordToPDF = async (req, res) => {
+    try{
+        // get the filepath
+        const filepath = req.file.path
+        const extName = path.extname(filepath)
+        const newFilename = path.basename(filepath, extName) + '.pdf'
+        const outpath = path.join('./public/files', newFilename)
+
+        //await new Promise((resolve, reject) =>
+        docConverter(filepath, outpath, function(err, res) {
+            if(err){
+                console.log(err)
+            }
+        })
+        //}))
+
+        res.download(outpath)
+
+    } catch(error) {
+        console.log(`Something went wrong. ${error}`)
+        res.redirect(req.originalUrl)
+    }
+}
+
+
+module.exports = {
+    convertJpg2PDF, 
+    convertPDF2Jpg, 
+    convertWordToPDF}
