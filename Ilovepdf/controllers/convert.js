@@ -5,22 +5,30 @@ const path = require('path')
 const PDFDocument = require('pdfkit')
 const docConverter = require('docx-pdf')
 
+
+// global var for download
+var downloadPath
+var uploadedPath
+
 const convertJpg2PDF = async (req, res) => {
     try{
         // get the file uploaded
     const filepath = req.file.path
+    uploadedPath = filepath
     const extName = path.extname(filepath)
     const newFilename = path.basename(filepath, extName) + '.pdf'
     const outpath = path.join('./public/files', newFilename)
 
     const doc = new PDFDocument
     const writeStream = fs.createWriteStream(outpath)
+    downloadPath = outpath
 
     // Listen for the 'finish' event to know when the PDF is fully generated
     writeStream.on('finish', () => {
     // Now, the PDF is fully generated, and the writeStream is closed.
     // We can trigger the download after the 'finish' event is emitted.
-    res.download(outpath);
+    //res.download(outpath);
+    res.redirect('/download')
     })
 
     doc.pipe(writeStream)
@@ -47,7 +55,7 @@ const convertPDF2Jpg = async (req, res) => {
         const newFilename = path.basename(filepath, extName) + '.jpg'
         const outpath = path.join('./public/files', newFilename)
 
-        console.log(newFilename)
+        downloadPath = outpath
     } catch (error) {
         console.log(`Something went wrong. ${error}`)
         res.redirect(req.originalUrl)
@@ -80,7 +88,34 @@ const convertWordToPDF = async (req, res) => {
 }
 
 
+const downloadFile = async (req, res) => {
+    try{
+        res.download(downloadPath)
+        console.log(`File ${downloadPath} successfully downloaded.`)
+
+        try{
+          console.log(`Trying to delete`)
+           await fs.unlink(uploadedPath /*,(err) => {
+            if (err) console.log(err)
+            else console.log(`Deleted the uploaded file`)
+           }*/)
+           await fs.unlink(downloadPath /*, (err) => {
+            if (err) console.log(err)
+            else console.log(`Deleted the processed file`)
+           }*/)
+        }catch(error){
+            console.log(`Something with uploading and deleting files. ${error}`)
+        }
+    } catch(error){
+        console.log( `Something went wrong`)
+        res.redirect('/home')
+    }
+
+}
+
+
 module.exports = {
     convertJpg2PDF, 
     convertPDF2Jpg, 
-    convertWordToPDF}
+    convertWordToPDF,
+    downloadFile}

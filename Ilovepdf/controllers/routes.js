@@ -1,3 +1,5 @@
+// controllers for the different routes
+
 const homePage = (req, res) => {
     res.render('home', {title: "iLovePDF | Online PDF tools"})
 }
@@ -26,7 +28,7 @@ const PDF2jpg = (req, res) => {
     res.render('pdf2jpg', {title: "Convert PDF to JPG"})
 }
 
-const downloadFile = (req, res) => {
+const downloadPage = (req, res) => {
     res.render('download', {title: "Download File"})
 }
 
@@ -43,7 +45,7 @@ module.exports = {
     compressPDF,
     pdf2Word,
     jpg2PDF, 
-    downloadFile, 
+    downloadPage, 
     PDF2jpg,
     Word2PDF
 }
