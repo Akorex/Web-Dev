@@ -88,18 +88,18 @@ const convertWordToPDF = async (req, res) => {
 }
 
 
-const downloadFile = async (req, res) => {
+const downloadFile = (req, res) => {
     try{
         res.download(downloadPath)
         console.log(`File ${downloadPath} successfully downloaded.`)
 
         try{
           console.log(`Trying to delete`)
-           await fs.unlink(uploadedPath /*,(err) => {
+           fs.unlink(uploadedPath /*,(err) => {
             if (err) console.log(err)
             else console.log(`Deleted the uploaded file`)
            }*/)
-           await fs.unlink(downloadPath /*, (err) => {
+           fs.unlink(downloadPath /*, (err) => {
             if (err) console.log(err)
             else console.log(`Deleted the processed file`)
            }*/)
