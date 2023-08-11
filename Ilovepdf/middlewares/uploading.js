@@ -12,6 +12,17 @@ const multerStorage = multer.diskStorage({
     }
 })
 
+const storage = multer.diskStorage({
+    destination: './public/files',
+
+    filename: (req, file, cb) =>{
+        cb(null, `${file.originalname}`)
+    }
+})
+
+
+// filter
+
 const multerFilter = (req, file, cb) => {
     if (file.mimetype.split('.')[1] === 'jpg'){
         cb(null, true)
@@ -20,16 +31,19 @@ const multerFilter = (req, file, cb) => {
     }
 }
 
-//const uploading = multer({
-  //  storage: multerStorage,
-    //limits: {fieldSize: 1 * 1024 * 1024}, // 1MB
-
-    //fileFilter: multerFilter,
-//}).array('uploadedImages', 2)
-
-
 const uploading = multer({
     storage: multerStorage,
-    limits: {fieldSize: 1 * 1024 * 1024} // 1 MB
+    limits: {fileSize: 1 * 1024 * 1024} // 1 MB
 })
-module.exports = uploading
+
+// for multiple file upload - not yet working
+
+const multiUpload = multer({
+   storage: storage,
+    limits: {fileSize: 1 * 1024 * 1024},
+
+}).array('files', 2)
+
+
+
+module.exports = {uploading, multiUpload}

@@ -1,5 +1,7 @@
 const express = require('express')
-const uploading = require('../middlewares/uploading')
+const {uploading, multiUpload} = require('../middlewares/uploading')
+//const uploading = require('../middlewares/uploading')
+
 
 const {homePage, 
     mergePDF, 
@@ -31,10 +33,12 @@ Router.get('/download', downloadPage)//.get(downloadFile)
 Router.get('/pdf_to_jpg', PDF2jpg)
 
 // POST
-Router.post('/jpg_to_pdf', uploading.single('file'), convertJpg2PDF)
-Router.post('/pdf_to_jpg', uploading.single('file'), convertPDF2Jpg)
-Router.post('/word_to_pdf', uploading.single('file'), convertWordToPDF)
+Router.post('/jpg_to_pdf', uploading.single('files'), convertJpg2PDF)
+Router.post('/pdf_to_jpg', uploading.single('files'), convertPDF2Jpg)
+Router.post('/word_to_pdf', uploading.single('files'), convertWordToPDF)
 Router.post('/download', downloadFile)
-//Router.post('/jpg_to_pdf', uploading, convertJpg2PDF) for multiple jpg upload failed
+
+
+// Router.post('/jpg_to_pdf', multiUpload, convertJpg2PDF) multi-upload not working
 
 module.exports = Router

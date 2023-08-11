@@ -14,6 +14,8 @@ const convertJpg2PDF = async (req, res) => {
     try{
         // get the file uploaded
     const filepath = req.file.path
+    //const filepath = req.files.path multi-upload not working
+    console.log(filepath)
     uploadedPath = filepath
     const extName = path.extname(filepath)
     const newFilename = path.basename(filepath, extName) + '.pdf'
