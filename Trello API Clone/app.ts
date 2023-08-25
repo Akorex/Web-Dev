@@ -1,13 +1,15 @@
-const express = require('express')
-const notFoundMiddleware = require('./middlewares/not-found')
+import express, {Application, Request, Response} from 'express'
+import notFoundMiddleware from './middlewares/not-found'
+import logger from './logger'
+
 require('dotenv').config()
 
 // setup
-const app = express()
-port = process.env.PORT || 3000
+const app: Application = express()
+const port = process.env.PORT || 3000
 
 // routes
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('<h1> Trello - a Project Management Platform </h1>')
 })
 
