@@ -3,7 +3,7 @@ import notFoundMiddleware from './middlewares/not-found'
 import logger from './logger'
 import errorMiddleWare from './middlewares/error-handler'
 import connectDB from './db/connect'
-
+import authRouter from './routes/auth'
 
 require('dotenv').config()
 
@@ -16,8 +16,7 @@ app.get('/', (req: Request, res: Response) => {
     res.send('<h1> Trello - a Project Management Platform </h1>')
 })
 
-
-// middlewares
+app.use('/api/v1/auth',authRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleWare)
 
