@@ -1,6 +1,6 @@
 import mongoose  from "mongoose"
-import {hash, compare, genSalt} from "bcryptjs"
-
+import { sign } from "jsonwebtoken"
+import { jwt_lifetime, jwt_secret } from "../config/config"
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -27,13 +27,6 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-// encrypt password before saving to database
-//UserSchema.pre('save', async function next(){
-  //  const salt = await genSalt(10)
-    //this.password = await hash(this.password, salt)
-
-    //next()
-//})
 
 const User = mongoose.model('User', UserSchema)
 

@@ -17,6 +17,7 @@ app.get('/', (req: Request, res: Response) => {
     res.send('<h1> Trello - a Project Management Platform </h1>')
 })
 
+app.use(express.json())
 app.use(`/api/v${config.apiVersion}/auth`,authRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleWare)
