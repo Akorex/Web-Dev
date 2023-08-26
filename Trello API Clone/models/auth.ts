@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose, { mongo } from "mongoose"
 import {hash, compare} from "bcryptjs"
 
 
@@ -27,4 +27,10 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-export default UserSchema
+// TO DO
+// encrypt password before saving to database
+// 
+
+const userModel = mongoose.model('User', UserSchema)
+
+export default userModel
