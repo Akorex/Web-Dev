@@ -5,7 +5,6 @@ import errorMiddleWare from './middlewares/error-handler'
 import authRouter from './routes/auth'
 import connectDB from './config/db'
 import {config} from './config/config'
-import 'dotenv/config'
 import 'express-async-errors'
 
 

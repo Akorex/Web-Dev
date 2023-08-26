@@ -28,13 +28,13 @@ const UserSchema = new mongoose.Schema({
 })
 
 // encrypt password before saving to database
-UserSchema.pre('save', async function next(){
-    const salt = await genSalt(10)
-    this.password = await hash(this.password, salt)
+//UserSchema.pre('save', async function next(){
+  //  const salt = await genSalt(10)
+    //this.password = await hash(this.password, salt)
 
     //next()
-})
+//})
 
-const userModel = mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema)
 
-export default userModel
+export default User
