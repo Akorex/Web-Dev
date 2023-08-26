@@ -1,5 +1,5 @@
-import mongoose, { mongo } from "mongoose"
-import {hash, compare} from "bcryptjs"
+import mongoose  from "mongoose"
+import {hash, compare, genSalt} from "bcryptjs"
 
 
 const UserSchema = new mongoose.Schema({
@@ -27,9 +27,13 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-// TO DO
 // encrypt password before saving to database
-// 
+UserSchema.pre('save', async function next(){
+    const salt = await genSalt(10)
+    this.password = await hash(this.password, salt)
+
+    //next()
+})
 
 const userModel = mongoose.model('User', UserSchema)
 

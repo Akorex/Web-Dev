@@ -4,19 +4,21 @@ import logger from './logger'
 import errorMiddleWare from './middlewares/error-handler'
 import authRouter from './routes/auth'
 import connectDB from './config/db'
+import {config} from './config/config'
 import 'dotenv/config'
+import 'express-async-errors'
 
 
 // setup
 const app: Application = express()
-const port = process.env.PORT || 3000
+const port = config.port
 
 // routes
 app.get('/', (req: Request, res: Response) => {
     res.send('<h1> Trello - a Project Management Platform </h1>')
 })
 
-app.use('/api/v1/auth',authRouter)
+app.use(`/api/v${config.apiVersion}/auth`,authRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleWare)
 
