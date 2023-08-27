@@ -5,6 +5,7 @@ import {
     generateHashedValue,
     createAccessToken,
     checkValidity } from '../utils/auth'
+import ApiError from '../middlewares/errors/api-error'
 
 export const register = async (req: Request, res: Response) => {
 
@@ -28,21 +29,21 @@ export const register = async (req: Request, res: Response) => {
     res.status(StatusCodes.CREATED).json({user: {name: newUser.name}, token})
 }
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response, next: NextFunction) => {
     const {email, password} = req.body
 
     if (!email || !password){
-        throw new Error("Please provide email and password")
+        return next(ApiError.badRequest("Please enter your email and password."))
     }
 
     const user = await User.findOne({email})
     if (!user){
-        throw new Error('Invalid Credentials')
+        return next(ApiError.badRequest("This user does not exist."))
     }
 
     // check if the password is correct
     if (!checkValidity(password, user.password)){
-        throw new Error('password is not correct')
+        return next(ApiError.badRequest("Your email/password is not correct."))
     }
 
     const token = createAccessToken(user._id)
