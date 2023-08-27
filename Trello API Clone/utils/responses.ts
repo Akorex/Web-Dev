@@ -9,4 +9,12 @@ export const errorResponse = (
 }
 
 // TO DO
-// a success response
+//add success data
+
+export const successResponse = (
+    res: Response,
+    statusCode: number,
+    message: string
+): void => {
+    res.status(statusCode).send({status: "success", message})
+}

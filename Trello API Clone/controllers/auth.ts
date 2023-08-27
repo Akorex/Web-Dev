@@ -7,6 +7,10 @@ import {
     checkValidity,
     generateRandomToken } from '../utils/auth'
 import ApiError from '../middlewares/errors/api-error'
+import {resetTokenExpiresIn} from '../config/config'
+
+
+
 
 export const register = async (req: Request, res: Response) => {
 
@@ -62,13 +66,19 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
         const resetToken = generateRandomToken()
         
         // check if user exists
-        const user = await User.findOne({email})
+        const user = await User.findOneAndUpdate({email}, 
+            {
+                passwordResetToken: resetToken,
+                passwordResetExpires: new Date(Date.now() + resetTokenExpiresIn * 10000) 
+                .toISOString()
+            })
+
+
         if (!user){
             return next(ApiError.badRequest("This user does not exist in the database."))
         }
 
         // To DO
-        // add password token collection to database 
         // add publish Email functionality
         // allows user to reach the resetPassword endpoint
 
