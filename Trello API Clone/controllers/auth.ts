@@ -88,15 +88,15 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
         const {password, passwordResetToken} = req.body
 
         const user = User.findOneAndUpdate({
-            passwordResetToken: passwordResetToken, // need to update the User schema for password reset token
-           // passwordResetExpires: -> looked into after updating the schema and set up functionality
+            passwordResetToken: passwordResetToken, 
+           // passwordResetExpires: -> to look into
 
         },
         {
             password: generateHashedValue(password),
-            passwordChangedAt: new Date(), //add to schema
-            passwordResetToken: null, // add to schema
-            passwordResetExpires: null // add to schema
+            passwordChangedAt: new Date(), 
+            passwordResetToken: null, 
+            passwordResetExpires: null 
 
         }
         

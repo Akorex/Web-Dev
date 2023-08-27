@@ -1,6 +1,5 @@
 import mongoose  from "mongoose"
-import { sign } from "jsonwebtoken"
-import { jwt_lifetime, jwt_secret } from "../config/config"
+import { getTypeAndDefaultValue } from "../utils/auth"
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -24,8 +23,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide a password'],
         minlength: [6, 'your password should be longer than 6 characters']
-    }
-})
+    },
+
+    passwordResetToken: getTypeAndDefaultValue(String, null),
+    passwordChangedAt: getTypeAndDefaultValue(Date, null), 
+    passwordResetExpires: getTypeAndDefaultValue(Date, null),
+},
+    {timestamps: true}
+)
 
 
 const User = mongoose.model('User', UserSchema)
