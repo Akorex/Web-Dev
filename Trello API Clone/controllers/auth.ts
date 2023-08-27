@@ -4,7 +4,8 @@ import { StatusCodes } from 'http-status-codes'
 import { 
     generateHashedValue,
     createAccessToken,
-    checkValidity } from '../utils/auth'
+    checkValidity,
+    generateRandomToken } from '../utils/auth'
 import ApiError from '../middlewares/errors/api-error'
 
 export const register = async (req: Request, res: Response) => {
@@ -52,3 +53,57 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
 }
 
+export const forgotPassword = async (req: Request, res: Response, next: NextFunction) => {
+
+    try{
+        const {email} = req.body
+        
+        // generate random token 
+        const resetToken = generateRandomToken()
+        
+        // check if user exists
+        const user = await User.findOne({email})
+        if (!user){
+            return next(ApiError.badRequest("This user does not exist in the database."))
+        }
+
+        // To DO
+        // add password token collection to database 
+        // add publish Email functionality
+        // allows user to reach the resetPassword endpoint
+
+
+    }catch(err) {
+        next(err)
+    }
+
+}
+
+export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+
+    // functionality allows user to reset their password after they have successfully gotten a 
+    // token from the forgotPassword endpoint.
+
+    try{
+        const {password, passwordResetToken} = req.body
+
+        const user = User.findOneAndUpdate({
+            passwordResetToken: passwordResetToken, // need to update the User schema for password reset token
+           // passwordResetExpires: -> looked into after updating the schema and set up functionality
+
+        },
+        {
+            password: generateHashedValue(password),
+            passwordChangedAt: new Date(), //add to schema
+            passwordResetToken: null, // add to schema
+            passwordResetExpires: null // add to schema
+
+        }
+        
+        )
+
+    }catch(err){
+        next(err)
+    }
+
+}

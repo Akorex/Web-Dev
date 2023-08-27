@@ -7,3 +7,6 @@ export const errorResponse = (
 ): void => {
     res.status(statusCode).send({status: 'error', error})
 }
+
+// TO DO
+// a success response
