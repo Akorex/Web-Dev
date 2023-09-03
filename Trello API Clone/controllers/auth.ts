@@ -10,8 +10,6 @@ import ApiError from '../middlewares/errors/api-error'
 import {resetTokenExpiresIn} from '../config/config'
 
 
-
-
 export const register = async (req: Request, res: Response) => {
 
     // if manual signup
@@ -78,7 +76,7 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
             return next(ApiError.badRequest("This user does not exist in the database."))
         }
 
-        // To DO
+        // To DO - send email to the user with a token to reset the password
         // add publish Email functionality
         // allows user to reach the resetPassword endpoint
 
@@ -99,7 +97,7 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
 
         const user = User.findOneAndUpdate({
             passwordResetToken: passwordResetToken, 
-           // passwordResetExpires: -> to look into
+            passwordResetExpires: { $gte: new Date().toISOString() }
 
         },
         {
@@ -108,9 +106,13 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
             passwordResetToken: null, 
             passwordResetExpires: null 
 
+        })
+
+        if (!user){
+            return next(ApiError.badRequest("Invalid/ Expired password token"))
         }
-        
-        )
+
+        res.status(StatusCodes.OK).json({message: "Password reset successful. Please log in with the new password"})
 
     }catch(err){
         next(err)

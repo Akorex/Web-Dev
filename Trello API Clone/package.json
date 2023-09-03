@@ -10,12 +10,14 @@
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.1",
+    "nodemailer": "^6.9.4",
     "winston": "^3.10.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.2",
+    "@types/nodemailer": "^6.4.9",
     "nodemon": "^2.0.22"
   },
   "scripts": {

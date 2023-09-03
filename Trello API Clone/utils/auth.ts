@@ -3,7 +3,7 @@ import {hashSync, compareSync, genSaltSync} from "bcryptjs"
 import {sign} from 'jsonwebtoken'
 import { jwt_lifetime, jwt_secret } from "../config/config"
 import crypto from "crypto"
-import { Number } from "mongoose"
+
 
 interface ISchemaDefault{
     type:
