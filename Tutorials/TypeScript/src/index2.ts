@@ -1,15 +1,17 @@
 // polymorphism
-/*
+
 type Filter = {
     (array: number[], f: (item: number) => boolean): number[]
     (array: string[], f: (item: string) => boolean): string[]
     (array: object[], f: (item: object) => boolean): object[]
-}*/
+}
 
 // a better way to do the above is with generic types
-type Filter = {
+/*type Filter = {
     <T> (array: T[], f: (item: T) => boolean): T[]
 }
+*/
+
 
 let filter: Filter = (array, f) => {
     let result = []
