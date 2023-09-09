@@ -2,7 +2,7 @@ import express, {Application, Request, Response} from 'express'
 import notFoundMiddleware from './middlewares/not-found'
 import logger from './logger'
 import errorHandler from './middlewares/errors'
-import authRouter from './routes/auth'
+import router from './routes'
 import connectDB from './config/db'
 import {config} from './config/config'
 import 'express-async-errors'
@@ -18,7 +18,7 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.use(express.json())
-app.use(`/api/v${config.apiVersion}/auth`,authRouter)
+app.use(`/api/v${config.apiVersion}`, router)
 app.use(notFoundMiddleware)
 app.use(errorHandler)
 

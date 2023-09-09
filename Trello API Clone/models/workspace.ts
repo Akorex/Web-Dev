@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const Workspace = new mongoose.Schema({
+const WorkspaceSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please provide a name for the workspace'],
@@ -17,4 +17,7 @@ const Workspace = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-})
+}, {timestamps: true})
+
+const Workspace = mongoose.model('Workspace', WorkspaceSchema)
+export default Workspace
