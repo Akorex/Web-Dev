@@ -14,7 +14,7 @@ import logger from '../logger'
 export const register = async (req: Request, res: Response) => {
 
     // if manual signup
-    const {name, email, password, passwordResetToken, passwordResetExpires} = req.body
+    const {name, email, password} = req.body
 
     const existingUser = await User.findOne({email})
     if (existingUser){
@@ -25,9 +25,7 @@ export const register = async (req: Request, res: Response) => {
         {
             name,
             email,
-            password: generateHashedValue(password),
-            passwordResetToken,
-            passwordResetExpires
+            password: generateHashedValue(password)
         })
 
     const token = createAccessToken(newUser._id)

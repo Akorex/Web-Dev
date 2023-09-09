@@ -12,6 +12,6 @@ export const config = {
     port: process.env.PORT,
 }
 
-export const jwt_secret = process.env.JWT_SECRET
+export const jwt_secret: any = process.env.JWT_SECRET
 export const jwt_lifetime = process.env.JWT_LIFETIME
 export const resetTokenExpiresIn = Number(process.env.RESET_TOKEN_EXPIRES_IN) || 0

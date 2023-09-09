@@ -23,7 +23,7 @@ export const generateHashedValue = (value: string) =>{
 
 
 export const createAccessToken = (id: any) => {
-    return sign({id}, 'jwt_secret', {expiresIn: jwt_lifetime})
+    return sign({id}, jwt_secret, {expiresIn: jwt_lifetime})
 }
 
 export const checkValidity = (value: string, compareValue: string) => {
