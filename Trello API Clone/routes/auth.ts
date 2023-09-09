@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {register, login, forgotPassword} from '../controllers/auth'
+import {register, login, forgotPassword, resetPassword} from '../controllers/auth'
 
 
 const authRouter = Router()
@@ -7,5 +7,6 @@ const authRouter = Router()
 authRouter.post('/register', register)
 authRouter.post('/login', login)
 authRouter.post('/forgot-password', forgotPassword)
+authRouter.post('/reset-password', resetPassword)
 
 export default authRouter

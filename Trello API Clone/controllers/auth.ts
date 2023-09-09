@@ -89,9 +89,6 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
 
 export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
 
-    // functionality allows user to reset their password after they have successfully gotten a 
-    // token from the forgotPassword endpoint.
-
     try{
         const {password, passwordResetToken} = req.body
 
