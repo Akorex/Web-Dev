@@ -8,12 +8,13 @@ import {
     generateRandomToken } from '../utils/auth'
 import ApiError from '../middlewares/errors/api-error'
 import {resetTokenExpiresIn} from '../config/config'
+import logger from '../logger'
 
 
 export const register = async (req: Request, res: Response) => {
 
     // if manual signup
-    const {name, email, password} = req.body
+    const {name, email, password, passwordResetToken, passwordResetExpires} = req.body
 
     const existingUser = await User.findOne({email})
     if (existingUser){
@@ -24,7 +25,9 @@ export const register = async (req: Request, res: Response) => {
         {
             name,
             email,
-            password: generateHashedValue(password)
+            password: generateHashedValue(password),
+            passwordResetToken,
+            passwordResetExpires
         })
 
     const token = createAccessToken(newUser._id)
@@ -90,9 +93,10 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
 export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
 
     try{
+        //logger.info("START: Reset Password")
         const {password, passwordResetToken} = req.body
 
-        const user = User.findOneAndUpdate({
+        const user = await User.findOneAndUpdate({
             passwordResetToken: passwordResetToken, 
             passwordResetExpires: { $gte: new Date().toISOString() }
 
@@ -103,7 +107,7 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
             passwordResetToken: null, 
             passwordResetExpires: null 
 
-        })
+        }).lean()
 
         if (!user){
             return next(ApiError.badRequest("Invalid/ Expired password token"))
