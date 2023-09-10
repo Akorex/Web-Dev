@@ -16,6 +16,11 @@ const WorkspaceSchema = new mongoose.Schema({
     visibility: {
         type: Boolean,
         default: false
+    }, 
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'workspace must be created by a user']
     }
 }, {timestamps: true})
 

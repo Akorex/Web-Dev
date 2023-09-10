@@ -1,6 +1,6 @@
 // utility functions 
 import {hashSync, compareSync, genSaltSync} from "bcryptjs"
-import {sign} from 'jsonwebtoken'
+import {sign, verify} from 'jsonwebtoken'
 import { jwt_lifetime, jwt_secret } from "../config/config"
 import crypto from "crypto"
 
@@ -24,6 +24,11 @@ export const generateHashedValue = (value: string) =>{
 
 export const createAccessToken = (id: any) => {
     return sign({id}, jwt_secret, {expiresIn: jwt_lifetime})
+}
+
+
+export const isTokenValid = (token: string) => {
+    return verify(token, jwt_secret)
 }
 
 export const checkValidity = (value: string, compareValue: string) => {

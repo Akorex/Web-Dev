@@ -1,8 +1,7 @@
 import User from '../models/auth'
-import {verify} from 'jsonwebtoken'
-import { jwt_lifetime, jwt_secret } from "../config/config"
 import { Request, Response, NextFunction } from 'express'
 import ApiError from './errors/api-error'
+import { isTokenValid } from '../utils/auth'
 
 
 // Define a custom interface to include the 'user' property
@@ -11,13 +10,11 @@ declare global {
       interface Request {
         user?: {
           userId: string;
-          name: string;
+          name?: string;
         };
       }
     }
   }
-
-
 
 
 export const isLoggedIn = async (req:Request, res: Response, next: NextFunction) => {
@@ -33,8 +30,8 @@ export const isLoggedIn = async (req:Request, res: Response, next: NextFunction)
         const token = authHeader.split(' ')[1]
 
         try{
-            const payload: any = verify(token, jwt_secret)
-            req.user  = {userId: payload.userId, name: payload.name}
+            const payload: any = isTokenValid(token)
+            req.user  = {userId: payload.id}
             next()
 
         }catch(e){
