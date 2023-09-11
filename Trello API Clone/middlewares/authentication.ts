@@ -1,4 +1,3 @@
-import User from '../models/auth'
 import { Request, Response, NextFunction } from 'express'
 import ApiError from './errors/api-error'
 import { isTokenValid } from '../utils/auth'

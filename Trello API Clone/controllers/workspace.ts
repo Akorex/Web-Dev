@@ -5,14 +5,32 @@ import ApiError from '../middlewares/errors/api-error'
 import User from '../models/auth'
 
 export const getAllWorkspaces = async (req: Request, res: Response) => {
-    // returns all workspaces created by logged in user
-    const workspaces = await Workspace.find({})
+
+    try{
+        // returns all workspaces created by logged in user
+        const workspaces = await Workspace.find({createdBy: req.user?.userId}).sort('createdAt')
+
+        if (workspaces && workspaces.length > 0){
+            const formattedWorkspaces = workspaces.map(workspaces => ({
+                name: workspaces.name,
+                members: workspaces.members
+            }))
+
+            res.status(StatusCodes.OK).json({workspaces: formattedWorkspaces, count: workspaces.length})
+        }else{
+            res.status(StatusCodes.OK).json({workspaces: [], count: 0})
+        }
+    }catch(e){
+        return ApiError.internalError()
+    }
 }
 
 
 export const getWorkspace = async (req: Request, res: Response) => {
 
-    // returns a specific workspace
+    // returns a specific workspace created by logged in user
+
+    
 
 }
 

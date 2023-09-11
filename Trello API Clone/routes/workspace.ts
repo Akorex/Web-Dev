@@ -1,10 +1,10 @@
 import { Router } from "express"
-import { createWorkspace, getWorkspace } from "../controllers/workspace"
+import { createWorkspace, getAllWorkspaces, getWorkspace } from "../controllers/workspace"
 
 const workspaceRouter = Router()
 
 
-workspaceRouter.route('/').post(createWorkspace)
+workspaceRouter.route('/').post(createWorkspace).get(getAllWorkspaces)
 workspaceRouter.route('/:').get(getWorkspace)
 
 

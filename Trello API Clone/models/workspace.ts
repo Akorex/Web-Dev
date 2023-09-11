@@ -4,7 +4,8 @@ const WorkspaceSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please provide a name for the workspace'],
-        maxlength: 20
+        maxlength: 20,
+        unique: true
     }, 
 
     members: [{
