@@ -17,7 +17,6 @@ declare global {
 
 
 export const isLoggedIn = async (req:Request, res: Response, next: NextFunction) => {
-    // check header
 
     const authHeader = req.headers['authorization']
 

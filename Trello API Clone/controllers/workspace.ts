@@ -28,11 +28,59 @@ export const getAllWorkspaces = async (req: Request, res: Response) => {
 
 export const getWorkspace = async (req: Request, res: Response) => {
 
-    // returns a specific workspace created by logged in user
+    try{ 
+        // returns a specific workspace created by logged in user
+         const user = req.user?.userId
+         const workspaceId = req.params.id
+        
+         const workspace = await Workspace.findOne({createdBy: user, 
+            _id: workspaceId})
 
-    
+        if (workspace) {
+            res.status(StatusCodes.OK).json({workspace: {name: workspace.name, createdBy: workspace.createdBy}})
+        }else{
+            res.status(StatusCodes.NOT_FOUND).json({message: 'The workspace was not found'})
+        }
 
+    }catch(e){
+        return ApiError.internalError()
+    }
 }
+
+
+export const deleteWorkspace = async (req: Request, res: Response) => {
+    try{
+        const user = req.user?.userId
+        const workspaceId = req.params.id
+
+        const workspace = await Workspace.findOneAndRemove({_id: workspaceId, createdBy: user})
+        console.log(workspace)
+
+        if (!workspace){
+            return ApiError.badRequest('That workspace was not found')
+        }
+
+        res.status(StatusCodes.OK).json({message: 'The workspace was deleted successfully.'})
+
+    }catch(e){
+        return ApiError.internalError()
+    }
+}
+
+
+export const addMember = async (req: Request, res: Response) => {
+    try{
+        const user = req.user?.userId
+        const workspaceId = req.params.id
+        const {membersEmails} = req.body
+
+        const workspace = await Workspace.findOneAndUpdate({_id: workspaceId, createdBy: user}, req.body)
+
+    }catch(e){
+        return ApiError.internalError()
+    }
+}
+
 
 export const createWorkspace = async (req: Request, res: Response) => {
     try{
@@ -52,7 +100,10 @@ export const createWorkspace = async (req: Request, res: Response) => {
             createdBy,
             visibility
         })
-        res.status(StatusCodes.CREATED).json({newWorkspace})
+        res.status(StatusCodes.CREATED).json({
+            workspace: {name: newWorkspace.name, 
+            members: newWorkspace.members, 
+            createdBy: newWorkspace.createdBy}})
 
     }catch(e){
        return ApiError.internalError()

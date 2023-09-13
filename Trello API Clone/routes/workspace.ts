@@ -1,11 +1,11 @@
 import { Router } from "express"
-import { createWorkspace, getAllWorkspaces, getWorkspace } from "../controllers/workspace"
+import { createWorkspace, deleteWorkspace, getAllWorkspaces, getWorkspace } from "../controllers/workspace"
 
 const workspaceRouter = Router()
 
 
 workspaceRouter.route('/').post(createWorkspace).get(getAllWorkspaces)
-workspaceRouter.route('/:').get(getWorkspace)
+workspaceRouter.route('/:id').get(getWorkspace).delete(deleteWorkspace)
 
 
 
