@@ -54,7 +54,6 @@ export const deleteWorkspace = async (req: Request, res: Response) => {
         const workspaceId = req.params.id
 
         const workspace = await Workspace.findOneAndRemove({_id: workspaceId, createdBy: user})
-        console.log(workspace)
 
         if (!workspace){
             return ApiError.badRequest('That workspace was not found')
@@ -69,6 +68,8 @@ export const deleteWorkspace = async (req: Request, res: Response) => {
 
 
 export const addMember = async (req: Request, res: Response) => {
+
+    // to continue working on this functionality
     try{
         const user = req.user?.userId
         const workspaceId = req.params.id
