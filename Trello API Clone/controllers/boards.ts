@@ -75,5 +75,31 @@ export const createBoard = async (req: Request, res: Response) => {
 }
 
 export const updateBoard = async (req: Request, res: Response) => {
+    // allows for logged-in user to update a board 
+
+    try{
+        const workspaceId = req.query.workspace
+        const boardId = req.params.id
+        const {name, content, status} = req.body
+
+        const board = await Boards.findOneAndUpdate({_id: boardId, workspace: workspaceId}, {
+            name,
+            content,
+            status 
+         }, {new: true, runValidators: true })
+
+         if (board) {
+            res.status(StatusCodes.ACCEPTED).json({board: {name: board.name, content: board.content, status: board.status}})
+         }else{
+            res.status(StatusCodes.NOT_FOUND).json({message: "Invalid board/update."})
+         }
+
+    }catch(e){
+        return ApiError.internalError()
+    }
+}
+
+export const deleteBoard = async (req: Request, res: Response) => {
+
 
 }
