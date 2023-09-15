@@ -100,6 +100,23 @@ export const updateBoard = async (req: Request, res: Response) => {
 }
 
 export const deleteBoard = async (req: Request, res: Response) => {
+    // allows for loggen-in user to delete a board
+    try{
+        const workspaceId = req.query.workspace
+        const boardId = req.params.id
 
+        const board = await Boards.findOneAndRemove({_id: boardId, workspace: workspaceId})
+
+        if (board){
+            res.status(StatusCodes.OK).json({message: 'The board was deleted successfully.'})
+        }else{
+            return res.status(StatusCodes.NOT_FOUND).json({message: 'The board was not found'})
+        }
+
+        
+
+    }catch(e){
+        return ApiError.internalError()
+    }
 
 }

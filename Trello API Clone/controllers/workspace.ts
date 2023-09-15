@@ -56,7 +56,7 @@ export const deleteWorkspace = async (req: Request, res: Response) => {
         const workspace = await Workspace.findOneAndRemove({_id: workspaceId, createdBy: user})
 
         if (!workspace){
-            return ApiError.badRequest('That workspace was not found')
+            return res.status(StatusCodes.NOT_FOUND).json({message: 'That workspace was not found'})
         }
 
         res.status(StatusCodes.OK).json({message: 'The workspace was deleted successfully.'})
