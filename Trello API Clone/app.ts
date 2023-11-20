@@ -6,11 +6,14 @@ import router from './routes'
 import connectDB from './config/db'
 import {config} from './config/config'
 import 'express-async-errors'
+import cors from 'cors'
+import helmet from 'helmet'
 
 
 // setup
 const app: Application = express()
 const port = config.port
+app.use(cors())
 
 // routes
 app.get('/', (req: Request, res: Response) => {
