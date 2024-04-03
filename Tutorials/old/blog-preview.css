@@ -1,0 +1,73 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --yellow: hsl(47, 88%, 63%);
+    --white: hsl(0, 0%, 100%);
+    --grey: hsl(0, 0%, 50%);
+    --black: hsl(0, 0%, 7%);
+  }
+
+body{
+    background-color: var(--yellow);
+    height:100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: "Figtree", sans-serif;
+}
+
+p{
+    font-size: 1rem;
+}
+
+
+
+.blog-body h5{
+    font-size: 1.5rem;
+    background-color: var(--yellow);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.blog-body .date{
+    padding: 1rem 0rem;
+    color: var(--black);
+    cursor: default;
+}
+.blog-body h3{
+    padding: 1rem 0rem 0rem 1rem;
+    cursor: default;
+}
+
+
+
+
+.blog-container{
+    background-color: var(--white);
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 500px;
+    width: 370px;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.author-container{
+    display: flex;
+    padding: 1rem 0;
+}
+
+.author-container img{
+    cursor: pointer;
+}
+.author-container .author{
+    font-weight: bolder;
+}
