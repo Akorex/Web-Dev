@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,500&display=swap');
+
+
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;   
+}
+
+body{
+    padding: 1rem 1rem;
+    margin: 1rem;
+}
+
+p{
+    font-size: 1rem;
+    font-family: "Poppins";
+    padding: 1rem 0.5rem;
+}
+
+
+
+#start-payment-button{
+    cursor: pointer;
+    position: relative;
+    background-color: #ff9b00;
+    max-width: 30%;
+    border: none;
+    border-radius: 4px;
+    padding: 7.5px 16px;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .1s ease-in;
+}
