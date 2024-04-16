@@ -1,14 +1,10 @@
 function makePayment(){
     FlutterwaveCheckout({
-        public_key: "FLWPUBK_TEST-02b9b5fc6406bd4a41c3ff141cc45e93-X",
-        tx_ref: "txref-DI0NzMx13",
+        public_key: "FLWPUBK_TEST-5e3401830a1e162f3374f07b70a86d5b-X",
+        tx_ref: "txref-199248",
         amount: 2500,
         currency: "NGN",
-        payment_options: "card, banktransfer, ussd",
-        meta: {
-            source: "docs-inline-test",
-            consumer_mac: "92a3-912ba-1192a",
-        },
+        payment_options: "card",
         customer: {
             email: "test@mailnator.com",
             phone_number: "09060138509",
@@ -16,7 +12,7 @@ function makePayment(){
         },
         customizations: {
             title: "Carona",
-            description: "Test Payment",
+            description: "Pay for a ticket",
             logo: "https://checkout.flutterwave.com/assets/img/rave-logo.png"
         },
         callback: function(data){
@@ -28,3 +24,4 @@ function makePayment(){
 
     })
 }
+
