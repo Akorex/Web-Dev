@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
+import Btn from './Btn';
 
 
 function Greeting(props){
@@ -17,6 +18,7 @@ function App() {
       <Header name ="Anna" color= "purple"/>
       <Main />
       <Sidebar />
+      <Btn />
     </div>
   )
 }
