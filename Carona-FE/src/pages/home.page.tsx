@@ -17,6 +17,20 @@ export const HomePage = () => {
                 <img src= {heroImage}
                 className="mx-auto block w-[80%] pt-[100px] max-w-[300px] lg:max-w-[400px] md:pt-0 md:mr-4 md:mx-0"
                 />
+
+                <div className="max-w-[620px]">
+                    <div className="bg-[#F3FDF8] inline-block p-6 py-2 rounded-full mt-12">
+                        <div className="h-[10px] w-[10px] rounded-full bg-[#319A64] inline-block mr-4">
+                            <p className="capitalize text-[#377631] text-lg inline-block">
+                                the perfect ride awaits
+                            </p>
+                        </div>
+
+                        <h1 className="ttext-[36px] capitalize mt-4 leading-[38px]">
+                            Get where you need to go, safely and affordably
+                        </h1>
+                    </div>
+                </div>
             </section>
 
             <section className="px-6 mt-16 lg md:flex md:flex-wrap md:justify-between max-w-[1200px] mx-auto">
