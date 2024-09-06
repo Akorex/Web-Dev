@@ -4,6 +4,8 @@ import heroImage from "../assets/images/hero-image.png"
 import { Link } from "react-router-dom"
 import checkmark from "../assets/svg/check.svg"
 import shuttle from "../assets/images/shuttle.jpg"
+import car from "../assets/svg/car.svg"
+import shield from "../assets/svg/shield-check.svg"
 
 
 const features = [
@@ -115,11 +117,31 @@ export const HomePage = () => {
                 Travel with peace of mind knowing that we are committed 
                 to your safety every step of the way.
                 </p>
-
-
             </div>
-        </div>
 
+            <div className="mt-8 md:w-[48%] max-w-[410px]">
+            <div className="mb-4">
+              <div className="w-[50px] h-[50px] rounded-full bg-[#E2F4EA] flex justify-center items-center mb-2">
+                <img className="w-[30px]" src={shield} />
+              </div>
+              <h3 className="mb-2 text-xl">Safety Measures</h3>
+              <p>
+                We verify all users and provide real-time tracking and emergency
+                support, ensuring you can travel with confidence.
+              </p>
+            </div>
+            <div className="mb-4">
+              <div className="w-[50px] h-[50px] rounded-full bg-[#E2F4EA] flex justify-center items-center mb-2">
+                <img className="w-[30px]" src={car} />
+              </div>
+              <h3 className="mb-2 text-xl">Well-Maintained Vehicles</h3>
+              <p>
+                All vehicles are regularly inspected and maintained to ensure
+                your comfort and safety on every trip.{" "}
+              </p>
+            </div>
+          </div>
+        </div>
     </section>
         </div>
     )
